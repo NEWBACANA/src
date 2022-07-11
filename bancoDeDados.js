@@ -1,0 +1,20 @@
+const sequence = {
+    _id: 1,
+    get id() { return this.id++}
+}
+
+const produtos = {}
+
+function salvarProduto(produto) {
+    if (!produto.id) produto.id = sequence.id
+    produtos[produto.id] = produto
+    return produto
+}
+
+function getproduto(id) {
+    return produtos[id] || {}
+}
+function getprodutos(){
+    return Object.values(produtos)
+}
+module.exports = { salvarProduto, getproduto, getprodutos}
